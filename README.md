@@ -36,6 +36,42 @@ GET / → Returns greeting message
 ```
 
 ---
+ Prerequisites
+
+Ensure the following tools are installed before running the application:
+
+
+
+
+
+
+
+
+ Ruby
+
+Install Ruby from the official website:
+
+ https://www.ruby-lang.org/en/downloads/
+
+Verify the installation:
+
+ruby -v
+ Bundler
+
+Bundler is used to manage project dependencies.
+
+Install Bundler:
+
+gem install bundler
+
+Verify the installation:
+
+bundler -v
+ Install Project Dependencies
+
+Install all required gems using Bundler:
+
+bundle install
 
 ## Quick Start
 
@@ -248,41 +284,29 @@ You can deploy the application using the nifectl CLI.
 
 ### Install nifectl CLI (Windows)
 
-#### 1. Download
+#### Step 1: Download nifectl
 
-https://github.com/nifetency/nifectl/releases/tag/v4.1.3-dev
-
-Download:
-
-```
-nifectl-windows-amd64.zip
-```
+https://docs.nife.io/Quick-Start/Nifectl
 
 ---
 
-#### 2. Extract
-
-* Right-click the ZIP file
-* Select Extract All
-* Open the extracted folder
-
----
-
-#### 3. Open Terminal
+#### Step 2: Open Terminal
 
 * Type `cmd` in the address bar
   or
-* Right-click and select Open in Terminal
+* Right-click and select **Open in Terminal**
 
 ---
 
-#### 4. Verify Installation
+#### Step 3: Verify Installation
 
 ```bash
 nifectl --help
 ```
 
 ---
+
+### Deployment Steps
 
 ### Step 1: Login
 
