@@ -373,3 +373,22 @@ https://<your-nife-url>
 | Deployment blocked | Resolve security issues     |
 
 ---
+
+## Acknowledgements
+
+This repository is maintained by Nifetency as a sample deployment project for Nife.io.
+
+If this repository is derived from an upstream example, proper credit should be given to the original author.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+## References
+
+- Original Repository: https://github.com/nifetency/ruby-example
+- NIFE Platform: https://nife.io/
