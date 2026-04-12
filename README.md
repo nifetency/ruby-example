@@ -1,25 +1,24 @@
 # Ruby Sinatra Example Application
 
-A lightweight, production-ready Ruby web application built with Sinatra.
-This project demonstrates a simple HTTP service, containerization, and deployment using Docker and NIFE.
-
----
-
 ## Overview
 
-This application exposes a single HTTP endpoint that returns a customizable greeting using an environment variable.
+A lightweight, production-ready Ruby web application built with Sinatra.
+
+This project demonstrates:
+- A simple HTTP service
+- Containerization using Docker
+- Deployment using NIFE
 
 It is suitable for:
-
-* Learning Sinatra fundamentals
-* Understanding containerized deployments
-* Practicing cloud deployment workflows
+- Learning Sinatra fundamentals
+- Understanding containerized deployments
+- Practicing cloud deployment workflows
 
 ---
 
 ## Application Flow
 
-```
+```text
 1. HTTP Request (GET /)
 2. Handled by Sinatra route
 3. Read NAME from environment
@@ -31,57 +30,24 @@ It is suitable for:
 
 ## Endpoint
 
-```
+```text
 GET / → Returns greeting message
 ```
 
 ---
- Prerequisites
 
-Ensure the following tools are installed before running the application:
+## Requirements
 
+Make sure you have the following installed:
 
-
-
-
-
-
-
- Ruby
-
-Install Ruby from the official website:
-
- https://www.ruby-lang.org/en/downloads/
-
-Verify the installation:
-
-ruby -v
- Bundler
-
-Bundler is used to manage project dependencies.
-
-Install Bundler:
-
-gem install bundler
-
-Verify the installation:
-
-bundler -v
- Install Project Dependencies
-
-Install all required gems using Bundler:
-
-bundle install
-
-## Quick Start
-
-### Prerequisites
-
-* Ruby 3.0+
-* RubyGems
-* Git
+- Ruby (3.0+)
+- RubyGems
+- Bundler
+- Git
 
 ---
+
+## Installation
 
 ### 1. Clone the Repository
 
@@ -98,7 +64,7 @@ cd ruby-example
 gem install sinatra rackup puma
 ```
 
-If using a Gemfile:
+Or using Gemfile:
 
 ```bash
 bundle install
@@ -150,9 +116,10 @@ Bonjour David!
 
 ---
 
-## Docker Usage
+## Run with Docker (Optional)
 
 ```bash
+docker build -t ruby-example-app .
 docker run -p 8080:8080 -e NAME=Alice ruby-example-app
 ```
 
@@ -166,7 +133,7 @@ https://launch.nife.io/
 
 Deployment flow:
 
-```
+```text
 Source → Build → Resources → Review → Deploy
 ```
 
@@ -188,22 +155,22 @@ docker push <username>/ruby-example-app:latest
 
 ### Step 2: Configure Source
 
-* Source: Docker Image
-* Registry: Docker Hub
-* Image: `<username>/ruby-example-app:latest`
-* Tag: `latest`
+- Source: Docker Image
+- Registry: Docker Hub
+- Image: `<username>/ruby-example-app:latest`
+- Tag: `latest`
 
 ---
 
 ### Step 3: Build Configuration
 
-* Internal Port: `8080`
-* External Port: `80`
+- Internal Port: `8080`
+- External Port: `80`
 
 Optional environment variables:
 
 | Key      | Value      |
-| -------- | ---------- |
+|----------|------------|
 | NAME     | Ruby       |
 | RACK_ENV | production |
 
@@ -211,26 +178,26 @@ Optional environment variables:
 
 ### Step 4: Resources Configuration
 
-* Region: e.g., `ap-south-1`
-* Resource Type: CPU
+- Region: e.g., `ap-south-1`
+- Resource Type: CPU
 
 Recommended settings:
 
-* CPU Request: `250m`
-* Memory Request: `512MB`
-* CPU Limit: `500m`
-* Memory Limit: `1GB`
+- CPU Request: `250m`
+- Memory Request: `512MB`
+- CPU Limit: `500m`
+- Memory Limit: `1GB`
 
 ---
 
 ### Step 5: Deploy
 
-* Strategy: Rolling
-* Workload: Deployment
-* Routing Policy: Latency
-* Replicas: 1–2
+- Strategy: Rolling
+- Workload: Deployment
+- Routing Policy: Latency
+- Replicas: 1–2
 
-Click Deploy.
+Click **Deploy**.
 
 ---
 
@@ -238,16 +205,16 @@ Click Deploy.
 
 ### Step 1: Select Source
 
-* Source: Git Repository
-* Provider: GitHub
-* Branch: `main`
+- Source: Git Repository
+- Provider: GitHub
+- Branch: `main`
 
 ---
 
 ### Step 2: Build Configuration
 
-* Internal Port: `3000 / 4567 / 8080`
-* External Port: `80`
+- Internal Port: `8080`
+- External Port: `80`
 
 Enable:
 
@@ -261,10 +228,10 @@ Auto-Dockerize with Runtime
 
 NIFE automatically performs:
 
-* SAST
-* SCA
-* Container scan
-* IaC scan
+- SAST
+- SCA
+- Container scan
+- IaC scan
 
 Resolve any critical issues before proceeding.
 
@@ -282,23 +249,21 @@ You can deploy the application using the nifectl CLI.
 
 ---
 
-### Install nifectl CLI (Windows)
-
-#### Step 1: Download nifectl
+### Step 1: Download nifectl
 
 https://docs.nife.io/Quick-Start/Nifectl
 
 ---
 
-#### Step 2: Open Terminal
+### Step 2: Open Terminal
 
-* Type `cmd` in the address bar
-  or
-* Right-click and select **Open in Terminal**
+- Type `cmd` in the address bar  
+  OR  
+- Right-click → **Open in Terminal**
 
 ---
 
-#### Step 3: Verify Installation
+### Step 3: Verify Installation
 
 ```bash
 nifectl --help
@@ -306,7 +271,7 @@ nifectl --help
 
 ---
 
-### Deployment Steps
+## Deployment Steps
 
 ### Step 1: Login
 
@@ -323,24 +288,22 @@ nifectl init
 ```
 
 Provide:
-
-* Application name
-* Organization
-* Repository URL
-* Branch (`main`)
+- Application name
+- Organization
+- Repository URL
+- Branch (`main`)
 
 ---
 
 ### Step 3: Configure Deployment
 
-* Deployment Type: Deployment
-* Resource Type: CPU
-* Replicas: 1
+- Deployment Type: Deployment
+- Resource Type: CPU
+- Replicas: 1
 
 Ports:
-
-* Internal: `3000 / 4567 / 8080`
-* External: `80`
+- Internal: `8080`
+- External: `80`
 
 ---
 
@@ -365,10 +328,9 @@ IND - Mumbai
 ### Step 6: Monitor Deployment
 
 Monitor logs for:
-
-* Validation
-* Build
-* Deployment
+- Validation
+- Build
+- Deployment
 
 ---
 
@@ -383,31 +345,31 @@ https://<your-nife-url>
 ## Dependencies
 
 | Dependency | Purpose         |
-| ---------- | --------------- |
-| Ruby       | Runtime         |
-| Sinatra    | Web framework   |
-| Rack       | Interface layer |
-| Puma       | Web server      |
+|------------|----------------|
+| Ruby       | Runtime        |
+| Sinatra    | Web framework  |
+| Rack       | Interface layer|
+| Puma       | Web server     |
 
 ---
 
 ## Environment Variables
 
-| Variable | Description   | Default |
-| -------- | ------------- | ------- |
-| NAME     | Greeting name | World   |
+| Variable | Description     | Default |
+|----------|-----------------|---------|
+| NAME     | Greeting name   | World   |
 
 ---
 
 ## Troubleshooting
 
 | Issue               | Solution                    |
-| ------------------- | --------------------------- |
-| Port already in use | Change port or stop process |
-| Docker not running  | Start Docker                |
-| Image pull error    | Ensure image is public      |
-| Build fails         | Verify configuration        |
-| No workloads        | Create workload in NIFE     |
-| Deployment blocked  | Resolve security issues     |
+|--------------------|-----------------------------|
+| Port already in use| Change port or stop process |
+| Docker not running | Start Docker                |
+| Image pull error   | Ensure image is public      |
+| Build fails        | Verify configuration        |
+| No workloads       | Create workload in NIFE     |
+| Deployment blocked | Resolve security issues     |
 
 ---
