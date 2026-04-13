@@ -177,7 +177,7 @@ The following variables are commonly relevant for deployment.
 
 ## Acknowledgements
 
-This repository is maintained by **Nifetency** as a sample deployment project for [Nife.io](https://nife.io).
+This repository is maintained by Nifetency as a sample deployment project for Nife.io.
 
 If this repository is derived from an earlier template or upstream example, it is good practice to retain visible credit to the original author or source repository.
 ---
