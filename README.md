@@ -4,11 +4,15 @@ A simple **Ruby** application published as a **sample deployment project for [Ni
 
 This repository demonstrates how to run a lightweight Ruby application locally, package it with Docker, and deploy it on [Nife.io](https://nife.io). It is intended as a practical sample for testing Ruby deployment workflows and showcasing a straightforward Ruby deployment path.
 
+---
+
 ## Overview
 
 This project is a basic Ruby application with a standard project structure and backend logic. It is designed to be small enough for learning and deployment experiments while still reflecting the conventions of a real Ruby application.[3]
 
 If you want a simple backend-oriented sample to test deployment on [Nife.io](https://nife.io), this repository is a good starting point.
+
+---
 
 ## Features
 
@@ -21,6 +25,8 @@ If you want a simple backend-oriented sample to test deployment on [Nife.io](htt
 | Deployment-ready setup | Can be deployed using Git-based or Docker-based workflows |
 | Nife.io sample use case | Suitable as a reference project for [Nife.io](https://nife.io) deployments |
 
+---
+
 ## Tech Stack
 
 | Technology | Purpose |
@@ -31,6 +37,8 @@ If you want a simple backend-oriented sample to test deployment on [Nife.io](htt
 | Docker | Container packaging |
 | Nife.io | Deployment platform |
 
+---
+
 ## Prerequisites
 
 Before running the project locally, make sure the following are installed.
@@ -40,6 +48,8 @@ Before running the project locally, make sure the following are installed.
 | Ruby | Use the version specified in `.ruby-version` |
 | Bundler | Required to install Ruby gems |
 | Git | Required to clone the repository |
+
+---
 
 ## Getting Started
 
@@ -163,19 +173,24 @@ The following variables are commonly relevant for deployment.
 | Deployment fails on Nife.io | Verify ports, environment variables, and build settings |
 | Application is unreachable | Check routing, service exposure, and deployment logs |
 
+---
+
 ## Acknowledgements
 
 This repository is maintained by **Nifetency** as a sample deployment project for [Nife.io](https://nife.io).
 
 If this repository is derived from an earlier template or upstream example, it is good practice to retain visible credit to the original author or source repository.
+---
 
 ## License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the MIT License.
+
+---
 
 ## References
 
-[1]: https://nife.io "Nife.io"
-[2]: https://docs.nife.io/overview/quick-deploy "Nife.io Quick Deploy"
-[3]: https://github.com/nifetency/ruby-example "nifetency/ruby-example"
-[4]: https://docs.nife.io/Quick-Start/Nifectl "Nifectl Quick Start"
+1. [Nife.io](https://nife.io)
+2. [Nife Docs Overview](https://docs.nife.io/overview/)
+3. [Original Repository](https://github.com/nifetency/ruby-example.git)
+4. [Nife Quick Start](https://docs.nife.io/Quick-Start)
