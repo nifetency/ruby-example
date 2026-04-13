@@ -1,394 +1,181 @@
-# Ruby Sinatra Example Application
+# Ruby Example
+
+A simple **Ruby** application published as a **sample deployment project for [Nife.io](https://nife.io)**.
+
+This repository demonstrates how to run a lightweight Ruby application locally, package it with Docker, and deploy it on [Nife.io](https://nife.io). It is intended as a practical sample for testing Ruby deployment workflows and showcasing a straightforward Ruby deployment path.
 
 ## Overview
 
-A lightweight, production-ready Ruby web application built with Sinatra.
+This project is a basic Ruby application with a standard project structure and backend logic. It is designed to be small enough for learning and deployment experiments while still reflecting the conventions of a real Ruby application.[3]
 
-This project demonstrates:
-- A simple HTTP service
-- Containerization using Docker
-- Deployment using NIFE
+If you want a simple backend-oriented sample to test deployment on [Nife.io](https://nife.io), this repository is a good starting point.
 
-It is suitable for:
-- Learning Sinatra fundamentals
-- Understanding containerized deployments
-- Practicing cloud deployment workflows
+## Features
 
----
+| Feature | Description |
+| --- | --- |
+| Ruby app | Built with standard Ruby application structure |
+| Modular architecture | Uses classes, modules, and organized code structure |
+| Gem-based dependencies | Supports Ruby gems through Bundler for dependency management |
+| Docker support | Includes a `Dockerfile` for containerized execution |
+| Deployment-ready setup | Can be deployed using Git-based or Docker-based workflows |
+| Nife.io sample use case | Suitable as a reference project for [Nife.io](https://nife.io) deployments |
 
-## Application Flow
+## Tech Stack
 
-```text
-1. HTTP Request (GET /)
-2. Handled by Sinatra route
-3. Read NAME from environment
-4. Generate greeting
-5. Return response
-```
+| Technology | Purpose |
+| --- | --- |
+| Ruby | Runtime environment |
+| Bundler | Dependency management |
+| Sinatra/Rack | Web framework (optional, depending on configuration) |
+| Docker | Container packaging |
+| Nife.io | Deployment platform |
 
----
+## Prerequisites
 
-## Endpoint
+Before running the project locally, make sure the following are installed.
 
-```text
-GET / → Returns greeting message
-```
+| Requirement | Notes |
+| --- | --- |
+| Ruby | Use the version specified in `.ruby-version` |
+| Bundler | Required to install Ruby gems |
+| Git | Required to clone the repository |
 
----
+## Getting Started
 
-## Requirements
-
-Make sure you have the following installed:
-
-- Ruby (3.0+)
-- RubyGems
-- Bundler
-- Git
-
----
-
-## Installation
-
-### 1. Clone the Repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/nifetency/ruby-example.git
 cd ruby-example
 ```
 
----
-
-### 2. Install Dependencies
-
-```bash
-gem install sinatra rackup puma
-```
-
-Or using Gemfile:
+### Install dependencies
 
 ```bash
 bundle install
 ```
 
----
-
-### 3. Run the Application
+### Start the application
 
 ```bash
 ruby server.rb
 ```
 
----
+Then open the application at `http://localhost:8080`.
 
-### 4. Open in Browser
+## Run with Docker
 
-Visit:
+This project includes a Dockerfile for container-based execution.
 
-```
-http://localhost:8080
-```
-
-Expected output:
-
-```
-Bonjour world!
-```
-
----
-
-## Customization
-
-Set a custom name using environment variables:
+### Build the image
 
 ```bash
-# macOS/Linux
-NAME=David ruby server.rb
-
-# Windows PowerShell
-$env:NAME="David"; ruby server.rb
+docker build -t ruby-example .
 ```
 
-Output:
-
-```
-Bonjour David!
-```
-
----
-
-## Run with Docker (Optional)
+### Run the container
 
 ```bash
-docker build -t ruby-example-app .
-docker run -p 8080:8080 -e NAME=Alice ruby-example-app
+docker run -p 8080:8080 ruby-example
 ```
 
----
+After the container starts, open the app at `http://localhost:8080`.
 
-## Deployment on NIFE
+## Deploy on Nife.io
 
-Deploy your application using the NIFE platform:
+You can deploy this application on [Nife.io](https://nife.io) using either a Docker image, the source repository, or the CLI.[1] [2]
 
-https://launch.nife.io/
+### Option 1: Deploy from a Docker image
 
-Deployment flow:
-
-```text
-Source → Build → Resources → Review → Deploy
-```
-
-Prerequisite: Ensure a workload (Deployment, CronJob, or StatefulSet) exists.
-
----
-
-## Method 1: Deploy via Docker Image (Recommended)
-
-### Step 1: Build and Push Image
+First, build and push the image to your preferred container registry.
 
 ```bash
-docker build -t ruby-example-app .
-docker tag ruby-example-app <username>/ruby-example-app:latest
-docker push <username>/ruby-example-app:latest
+docker build -t ruby-example .
+docker tag ruby-example <username>/ruby-example:latest
+docker push <username>/ruby-example:latest
 ```
 
----
+Then configure a new application in Nife.io with the following settings.
 
-### Step 2: Configure Source
+| Setting | Value |
+| --- | --- |
+| Source | Docker Image |
+| Registry | Docker Hub or another supported registry |
+| Image | `<username>/ruby-example:latest` |
+| Internal Port | `8080` |
+| External Port | `80` |
+| Suggested Replicas | `1` |
 
-- Source: Docker Image
-- Registry: Docker Hub
-- Image: `<username>/ruby-example-app:latest`
-- Tag: `latest`
+### Option 2: Deploy from the Git repository
 
----
+You can also deploy the project directly from GitHub.
 
-### Step 3: Build Configuration
+| Setting | Value |
+| --- | --- |
+| Source | Git Repository |
+| Provider | GitHub |
+| Branch | `main` |
+| Internal Port | `8080` |
+| External Port | `80` |
+| Build Mode | Auto-Dockerize with runtime |
 
-- Internal Port: `8080`
-- External Port: `80`
+### Option 3: Deploy with `nifectl`
 
-Optional environment variables:
-
-| Key      | Value      |
-|----------|------------|
-| NAME     | Ruby       |
-| RACK_ENV | production |
-
----
-
-### Step 4: Resources Configuration
-
-- Region: e.g., `ap-south-1`
-- Resource Type: CPU
-
-Recommended settings:
-
-- CPU Request: `250m`
-- Memory Request: `512MB`
-- CPU Limit: `500m`
-- Memory Limit: `1GB`
-
----
-
-### Step 5: Deploy
-
-- Strategy: Rolling
-- Workload: Deployment
-- Routing Policy: Latency
-- Replicas: 1–2
-
-Click **Deploy**.
-
----
-
-## Method 2: Deploy via Git Repository
-
-### Step 1: Select Source
-
-- Source: Git Repository
-- Provider: GitHub
-- Branch: `main`
-
----
-
-### Step 2: Build Configuration
-
-- Internal Port: `8080`
-- External Port: `80`
-
-Enable:
-
-```
-Auto-Dockerize with Runtime
-```
-
----
-
-### Step 3: Build and Security
-
-NIFE automatically performs:
-
-- SAST
-- SCA
-- Container scan
-- IaC scan
-
-Resolve any critical issues before proceeding.
-
----
-
-### Step 4: Resources and Deploy
-
-Use the recommended configuration above and deploy.
-
----
-
-## Deployment using nifectl (CLI)
-
-You can deploy the application using the nifectl CLI.
-
----
-
-### Step 1: Download nifectl
-
-https://docs.nife.io/Quick-Start/Nifectl
-
----
-
-### Step 2: Open Terminal
-
-- Type `cmd` in the address bar  
-  OR  
-- Right-click → **Open in Terminal**
-
----
-
-### Step 3: Verify Installation
-
-```bash
-nifectl --help
-```
-
----
-
-## Deployment Steps
-
-### Step 1: Login
+If you prefer the command line, use the following workflow.
 
 ```bash
 nifectl auth login
-```
-
----
-
-### Step 2: Initialize Project
-
-```bash
 nifectl init
-```
-
-Provide:
-- Application name
-- Organization
-- Repository URL
-- Branch (`main`)
-
----
-
-### Step 3: Configure Deployment
-
-- Deployment Type: Deployment
-- Resource Type: CPU
-- Replicas: 1
-
-Ports:
-- Internal: `8080`
-- External: `80`
-
----
-
-### Step 4: Deploy
-
-```bash
 nifectl deploy
 ```
 
----
-
-### Step 5: Select Region
-
-Example:
-
-```
-IND - Mumbai
-```
-
----
-
-### Step 6: Monitor Deployment
-
-Monitor logs for:
-- Validation
-- Build
-- Deployment
-
----
-
-### Step 7: Access Application
-
-```
-https://<your-nife-url>
-```
-
----
-
-## Dependencies
-
-| Dependency | Purpose         |
-|------------|----------------|
-| Ruby       | Runtime        |
-| Sinatra    | Web framework  |
-| Rack       | Interface layer|
-| Puma       | Web server     |
-
----
+For step-by-step instructions, see the [Nife.io Quick Deploy documentation](https://docs.nife.io/overview/quick-deploy) and the [nifectl quick start guide](https://docs.nife.io/Quick-Start/Nifectl).
 
 ## Environment Variables
 
-| Variable | Description     | Default |
-|----------|-----------------|---------|
-| NAME     | Greeting name   | World   |
+The following variables are commonly relevant for deployment.
 
----
+| Variable | Description | Example |
+| --- | --- | --- |
+| `RACK_ENV` | Ruby/Rack execution environment | `production` |
+| `PORT` | Application port, if overridden by environment | `8080` |
+
+## Repository Structure
+
+| Path | Purpose |
+| --- | --- |
+| `lib/` | Main Ruby application code |
+| `config/` | Framework and environment configuration |
+| `test/` | Test files |
+| `public/` | Static public assets |
+| `Dockerfile` | Container build instructions |
+| `Gemfile` | Ruby gem dependencies |
+| `config.ru` | Rack configuration entry point |
 
 ## Troubleshooting
 
-| Issue               | Solution                    |
-|--------------------|-----------------------------|
-| Port already in use| Change port or stop process |
-| Docker not running | Start Docker                |
-| Image pull error   | Ensure image is public      |
-| Build fails        | Verify configuration        |
-| No workloads       | Create workload in NIFE     |
-| Deployment blocked | Resolve security issues     |
-
----
+| Issue | Suggested fix |
+| --- | --- |
+| Bundler install fails | Verify your Ruby version and rerun `bundle install` |
+| Port `8080` is already in use | Stop the conflicting process or remap the port |
+| Docker build fails | Recheck the Dockerfile and local Ruby environment |
+| Deployment fails on Nife.io | Verify ports, environment variables, and build settings |
+| Application is unreachable | Check routing, service exposure, and deployment logs |
 
 ## Acknowledgements
 
-This repository is maintained by Nifetency as a sample deployment project for Nife.io.
+This repository is maintained by **Nifetency** as a sample deployment project for [Nife.io](https://nife.io).
 
-If this repository is derived from an upstream example, proper credit should be given to the original author.
-
----
+If this repository is derived from an earlier template or upstream example, it is good practice to retain visible credit to the original author or source repository.
 
 ## License
 
-This project is licensed under the MIT License.
-
----
+This project is licensed under the **MIT License**.
 
 ## References
 
-- Original Repository: https://github.com/nifetency/ruby-example
-- NIFE Platform: https://nife.io/
+[1]: https://nife.io "Nife.io"
+[2]: https://docs.nife.io/overview/quick-deploy "Nife.io Quick Deploy"
+[3]: https://github.com/nifetency/ruby-example "nifetency/ruby-example"
+[4]: https://docs.nife.io/Quick-Start/Nifectl "Nifectl Quick Start"
