@@ -180,13 +180,10 @@ The following variables are commonly relevant for deployment.
 This repository is maintained by Nifetency as a sample deployment project for Nife.io.
 
 If this repository is derived from an earlier template or upstream example, it is good practice to retain visible credit to the original author or source repository.
----
 
 ## License
 
 This project is licensed under the MIT License.
-
----
 
 ## References
 
