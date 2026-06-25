@@ -1,3 +1,18 @@
+<div align="center">
+
+<h3 align="center"><b><u>Deploy this project Instantly</u></b></h3>
+
+<a href="https://launch.nife.io/deploy-app/start?repository-url=https://github.com/nifetency/ruby-example">
+  <img
+    src="https://launch.nife.io/deploy-on-nife.svg"
+    alt="Deploy on NIFE"
+    width="280"
+  />
+</a>
+
+</div>
+
+
 # Ruby Example
 
 A simple **Ruby** application published as a **sample deployment project for [Nife.io](https://nife.io)**.
@@ -141,16 +156,6 @@ nifectl deploy
 ```
 
 For step-by-step instructions, see the [Nife.io Quick Deploy documentation](https://docs.nife.io/overview/quick-deploy) and the [nifectl quick start guide](https://docs.nife.io/Quick-Start/Nifectl).
-
-
-## Option 4: Deploy on NIFE OneClick
-
-Launch your own instance of **ruby-example** with a single click.
-
-### Deploy as Application
-
-[![Deploy App on OneClick](https://img.shields.io/badge/🚀%20Deploy%20App%20on%20OneClick-6C2CF5?style=for-the-badge)](https://launch.nife.io/deploy-app/start?repository-url=https://github.com/nifetency/ruby-example.git)
-
 
 ## Environment Variables
 
