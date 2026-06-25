@@ -151,10 +151,6 @@ Launch your own instance of **ruby-example** with a single click.
 
 [![Deploy App on OneClick](https://img.shields.io/badge/🚀%20Deploy%20App%20on%20OneClick-6C2CF5?style=for-the-badge)](https://launch.nife.io/deploy-app/start?repository-url=https://github.com/nifetency/ruby-example.git)
 
-### Deploy as Site
-
-[![Deploy Site on OneClick](https://img.shields.io/badge/🌐%20Deploy%20Site%20on%20OneClick-22C55E?style=for-the-badge)](https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nifetency/ruby-example.git)
-
 
 ## Environment Variables
 
@@ -204,4 +200,5 @@ This project is licensed under the MIT License.
 1. [Nife.io](https://nife.io)
 2. [Nife Docs Overview](https://docs.nife.io/overview/)
 3. [Nife Quick Start](https://docs.nife.io/Quick-Start)
+4. (https://docs.nife.io/deploy/ruby/hello-world/)
 
