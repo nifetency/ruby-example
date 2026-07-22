@@ -2,7 +2,7 @@
 
 <h3 align="center"><b><u>Deploy this project Instantly</u></b></h3>
 
-<a href="https://launch.nife.io/deploy-app/start?repository-url=https://github.com/nifetency/ruby-example">
+<a href="https://launch.nife.io/deploy-app/start?repository-url=https://github.com/nife-public/ruby-example">
   <img
     src="https://launch.nife.io/deploy-on-nife.svg"
     alt="Deploy on NIFE"
@@ -71,7 +71,7 @@ Before running the project locally, make sure the following are installed.
 ### Clone the repository
 
 ```bash
-git clone https://github.com/nifetency/ruby-example.git
+git clone https://github.com/nife-public/ruby-example.git
 cd ruby-example
 ```
 
